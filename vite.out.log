@@ -1,0 +1,78 @@
+
+> saravana-fitness-frontend@1.0.0 dev
+> vite
+
+
+  [32m[1mVITE[22m v5.4.21[39m  [2mready in [0m[1m625[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m3000[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m6:32:30 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Signup.jsx[22m
+[2m6:32:30 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Signup.jsx[22m
+[2m6:36:47 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Signup.jsx[22m
+[2m6:36:53 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx[22m
+[2m6:37:15 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx[22m
+[2m6:37:21 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx[22m
+[2m6:37:31 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx[22m
+[2m6:50:57 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx[22m
+[2m6:51:06 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx[22m
+[2m6:51:08 PM[22m [36m[1m[vite][22m[39m [32m✨ new dependencies optimized: [33m@clerk/clerk-react[32m[39m
+[2m6:51:08 PM[22m [36m[1m[vite][22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[2m6:51:40 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/main.jsx[22m
+[2m6:51:45 PM[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
+[2m6:51:45 PM[22m [36m[1m[vite][22m[39m server restarted.
+[2m7:04:16 PM[22m [36m[1m[vite][22m[39m [32m.env changed, restarting server...[39m
+Re-optimizing dependencies because lockfile has changed
+[2m7:04:17 PM[22m [36m[1m[vite][22m[39m server restarted.
+[2m7:09:56 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/main.jsx[22m
+[2m7:09:57 PM[22m [36m[1m[vite][22m[39m [32m✨ new dependencies optimized: [33m@clerk/react[32m[39m
+[2m7:09:57 PM[22m [36m[1m[vite][22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[2m7:09:57 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/ClerkGoogleButton.jsx[22m
+[2m7:09:58 PM[22m [36m[1m[vite][22m[39m [33mhmr invalidate [39m[2m/src/main.jsx[22m Could not Fast Refresh ("true" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m7:09:58 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/main.jsx[22m
+[2m7:18:39 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/ClerkGoogleButton.jsx[22m
+[2m7:19:52 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m7:19:53 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m7:19:54 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m7:19:55 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Layout.jsx[22m
+[2m7:20:04 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Dashboard.jsx[22m
+[2m7:20:04 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/MemberProfile.jsx[22m
+[2m7:20:05 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Fees.jsx[22m
+[2m7:20:08 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Members.jsx[22m
+[2m7:20:09 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/MemberPortal.jsx[22m
+[2m7:20:10 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/MemberPortal.jsx[22m
+[2m7:20:11 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/MemberPortal.jsx[22m
+[2m7:20:12 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx[22m
+[2m7:20:14 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx[22m
+[2m7:20:15 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Signup.jsx[22m
+[2m7:31:09 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m7:34:41 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m7:34:54 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m7:35:12 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m7:35:21 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m7:37:38 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m7:39:09 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m7:39:35 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m7:39:41 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m7:39:54 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m7:40:31 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m8:01:28 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m8:01:39 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m8:01:54 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m8:02:04 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m8:02:13 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m8:03:50 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m8:04:18 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m8:05:50 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m8:06:48 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m8:07:31 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m8:07:40 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Dashboard.jsx[22m
+[2m8:07:46 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m8:08:18 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/MemberPortal.jsx[22m
+[2m8:08:44 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m8:09:11 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m8:09:27 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m8:09:42 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/style.css[22m
+[2m8:26:50 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx[22m
+[2m8:26:50 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx[22m
+[2m8:27:03 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx[22m
