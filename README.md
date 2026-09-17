@@ -620,7 +620,7 @@ NODE_ENV=production node backend/server.js
 
 ## Contributing
 
-Contributions are welcome.
+Contributions are welcome — maintained by [**@sabynextdoor**](https://github.com/sabynextdoor).
 
 1. Fork the repository.
 2. Create a feature branch: `git checkout -b feat/my-feature`.
@@ -628,6 +628,8 @@ Contributions are welcome.
 4. Push and open a Pull Request.
 
 Please keep PRs focused, match the existing code style, and never commit secrets (`.env` files are git-ignored).
+
+**Maintainer:** [@sabynextdoor](https://github.com/sabynextdoor) · **Contributors:** [add yourself](https://github.com/sabynextdoor/HazeFitness/graphs/contributors) by opening a pull request.
 
 ---
 
