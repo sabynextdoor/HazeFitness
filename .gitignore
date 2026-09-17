@@ -1,4 +1,10 @@
 node_modules/
 .env
-.en
+.env.*
+!.env.example
 frontend/dist/
+*.log
+*.err.log
+*.out.log
+desktop.ini
+Thumbs.db
