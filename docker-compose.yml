@@ -1,0 +1,51 @@
+# Haze Fitness — full stack (MySQL + app) in one command.
+#
+#   docker compose up --build
+#
+# Then open http://localhost:4000  (staff login: hazeadmin / Haze@12345)
+#
+# The MySQL service runs database/schema.sql on first boot only
+# (i.e. when the `dbdata` volume is empty). To reseed from scratch:
+#   docker compose down -v && docker compose up --build
+services:
+  db:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass123
+      MYSQL_DATABASE: sarogym
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-prootpass123"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  app:
+    build: .
+    image: ghcr.io/sabynextdoor/hazefitness:latest
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: rootpass123
+      DB_NAME: sarogym
+      ADMIN_USERNAME: hazeadmin
+      ADMIN_PASSWORD: Haze@12345
+      ADMIN_EMAIL: hazeadmin@hazefitness.in
+      FRONTEND_ORIGINS: http://localhost:4000
+    ports:
+      - "4000:4000"
+
+volumes:
+  dbdata:

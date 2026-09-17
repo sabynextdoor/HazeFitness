@@ -10,6 +10,8 @@
 [![Express](https://img.shields.io/badge/Express-4-000000.svg?style=flat-square&logo=express&logoColor=white)](https://expressjs.com)
 [![MySQL](https://img.shields.io/badge/MySQL-8-4479A1.svg?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com)
 [![Razorpay](https://img.shields.io/badge/Payments-Razorpay-0C2451.svg?style=flat-square&logo=razorpay&logoColor=white)](https://razorpay.com)
+[![Release](https://img.shields.io/github/v/release/sabynextdoor/HazeFitness?style=flat-square&color=6ae4ff&label=release)](https://github.com/sabynextdoor/HazeFitness/releases)
+[![Docker](https://img.shields.io/badge/GHCR-hazefitness-2496ED.svg?style=flat-square&logo=docker&logoColor=white)](https://github.com/sabynextdoor/HazeFitness/pkgs/container/hazefitness)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](#contributing)
 [![Made by Saby](https://img.shields.io/badge/Made%20by-Saby-8A2BE2.svg?style=flat-square)](#author)
 
@@ -34,6 +36,7 @@
   - [Step 3 — Configure and run the backend](#step-3--configure-and-run-the-backend)
   - [Step 4 — Run the frontend (development)](#step-4--run-the-frontend-development)
   - [Step 5 — Production build (single-server deploy)](#step-5--production-build-single-server-deploy)
+  - [Run with Docker](#run-with-docker)
   - [Default credentials](#default-credentials)
   - [Email OTP in this demo](#email-otp-in-this-demo)
 - [Environment Variables](#environment-variables)
@@ -45,6 +48,7 @@
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [Author](#author)
+- [Changelog](#changelog)
 - [License](#license)
 
 ---
@@ -355,6 +359,34 @@ npm run build        # outputs frontend/dist/
 
 Now run **only** the backend and open **http://localhost:4000** — Express serves `frontend/dist` as static files with an `index.html` fallback for client-side routes.
 
+### Run with Docker
+
+Prefer containers? A multi-stage `Dockerfile` and a `docker-compose.yml` bring up **MySQL + the full app** with one command — no local Node or MySQL needed.
+
+```bash
+docker compose up --build
+```
+
+Then open **http://localhost:4000** (staff login: `hazeadmin` / `Haze@12345`). The database is seeded from `database/schema.sql` on first boot. To reset everything:
+
+```bash
+docker compose down -v && docker compose up --build
+```
+
+**Run the prebuilt image** (published to GitHub Container Registry):
+
+```bash
+docker run -d --name hazefitness \
+  -p 4000:4000 \
+  -e DB_HOST=host.docker.internal \
+  -e DB_USER=root -e DB_PASSWORD=rootpass123 -e DB_NAME=sarogym \
+  -e ADMIN_USERNAME=hazeadmin -e ADMIN_PASSWORD=Haze@12345 \
+  ghcr.io/sabynextdoor/hazefitness:latest
+```
+
+> Replace `host.docker.internal` with your MySQL host. Every image is built and
+> published automatically by [`.github/workflows/docker-publish.yml`](.github/workflows/docker-publish.yml).
+
 ### Default credentials
 
 | Portal | Username | Password |
@@ -607,6 +639,14 @@ Please keep PRs focused, match the existing code style, and never commit secrets
 - Project: [HazeFitness](https://github.com/sabynextdoor/HazeFitness)
 
 This project is watermarked for authorship. Runtime and build layers carry a hidden creator signature, and every API response includes `X-Crafted-By: Saby <Haze Fitness GMS>`. Please keep the watermark and attribution intact if you fork it.
+
+---
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a full list of changes, and the
+[releases page](https://github.com/sabynextdoor/HazeFitness/releases) for
+versioned builds and Docker images.
 
 ---
 
