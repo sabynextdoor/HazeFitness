@@ -1,7 +1,9 @@
+// \u2022 HF-GMS \u00b7 crafted & signed by Saby \u00b7 keep this header
 const express = require('express');
 const router = express.Router();
 const db = require('../database/db');
 const dayjs = require('dayjs');
+const { configured, client, verifyCheckoutSignature, finalizePayment } = require('../services/razorpayPayments');
 
 // GET /api/fees/subscriptions?payment_status=&search=  -> dues list / fee tracker table
 router.get('/subscriptions', async (req, res) => {
@@ -97,6 +99,67 @@ router.post('/payments', async (req, res) => {
 
   const payment = await db.get('SELECT * FROM payments WHERE receipt_no = ?', [receiptNo]);
   res.status(201).json(payment);
+});
+
+// POST /api/fees/payments/orders  -> create a Razorpay order (or demo mock) for an online payment
+router.post('/payments/orders', async (req, res) => {
+  const subscriptionId = Number(req.body?.subscription_id);
+  const amount = Number(req.body?.amount);
+  if (!Number.isInteger(subscriptionId) || !Number.isFinite(amount) || amount <= 0) {
+    return res.status(400).json({ error: 'A subscription and positive payment amount are required' });
+  }
+  const sub = await db.get('SELECT * FROM subscriptions WHERE id = ?', [subscriptionId]);
+  if (!sub) return res.status(404).json({ error: 'Subscription not found' });
+  if (amount > Number(sub.balance_due) + 0.001) {
+    return res.status(400).json({ error: `Amount exceeds balance due (₹${Number(sub.balance_due).toFixed(2)})` });
+  }
+
+  const roundedAmount = Math.round(amount * 100) / 100;
+  const onlineEnabled = configured();
+
+  let order;
+  if (onlineEnabled) {
+    order = await client().orders.create({
+      amount: Math.round(roundedAmount * 100), currency: 'INR',
+      receipt: `sub_${sub.id}_${Date.now()}`,
+      notes: { subscription_id: String(sub.id), member_id: String(sub.member_id) },
+    });
+  } else {
+    if (process.env.NODE_ENV === 'production') {
+      return res.status(503).json({ error: 'Online payments are not configured yet. Contact the front desk.' });
+    }
+    order = { id: `mock_${Date.now()}`, amount: Math.round(roundedAmount * 100), currency: 'INR', key_id: 'mock' };
+  }
+  await db.run(`INSERT INTO payment_orders (subscription_id, member_id, amount, razorpay_order_id)
+    VALUES (?, ?, ?, ?)`, [sub.id, sub.member_id, roundedAmount, order.id]);
+  res.status(201).json({
+    order_id: order.id,
+    amount: order.amount,
+    currency: order.currency,
+    key_id: onlineEnabled ? process.env.RAZORPAY_KEY_ID : null,
+    mock: !onlineEnabled,
+  });
+});
+
+// POST /api/fees/payments/verify  -> verify + record an online payment
+router.post('/payments/verify', async (req, res) => {
+  const { razorpay_order_id, razorpay_payment_id, razorpay_signature, mock } = req.body || {};
+  const order = await db.get('SELECT * FROM payment_orders WHERE razorpay_order_id = ?', [razorpay_order_id]);
+  if (!order) return res.status(404).json({ error: 'Payment order not found' });
+  const isMock = Boolean(mock) || String(order.razorpay_order_id).startsWith('mock_');
+  if (!isMock && !verifyCheckoutSignature(order.razorpay_order_id, razorpay_payment_id, razorpay_signature)) {
+    return res.status(400).json({ error: 'Invalid payment signature' });
+  }
+  try {
+    res.json(await finalizePayment({
+      orderId: order.razorpay_order_id,
+      paymentId: isMock ? (razorpay_payment_id || `mock_pay_${Date.now()}`) : razorpay_payment_id,
+      mock: isMock,
+      mode: 'online',
+    }));
+  } catch (err) {
+    res.status(409).json({ error: err.message });
+  }
 });
 
 // GET /api/fees/receipt/:paymentId  -> full receipt data for printing/downloading

@@ -1,5 +1,8 @@
 export const API_BASE = '/api';
 
+// Signature fragment (part 2/3). See utils.js CREATOR_SIG_A.
+export const CREATOR_SIG_B = '\u0053\u0061\u0062\u0079';
+
 export async function api(path, options = {}) {
   const res = await fetch(API_BASE + path, {
     headers: { 'Content-Type': 'application/json' },

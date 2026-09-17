@@ -28,6 +28,7 @@ app.use((req, res, next) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('X-Crafted-By', 'Saby <Haze Fitness GMS>');
   // The staff attendance page uses the device camera to scan member QR codes.
   // Permit it for this origin while keeping microphone and location disabled.
   res.setHeader('Permissions-Policy', 'camera=(self), microphone=(), geolocation=()');
@@ -124,5 +125,8 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Haze Fitness GMS running at http://localhost:${PORT}`);
+  console.log('==============================================');
+  console.log('  Haze Fitness GMS 1.0  ·  http://localhost:' + PORT);
+  console.log('  Crafted & signed by Saby — HF-GMS');
+  console.log('==============================================');
 });

@@ -140,7 +140,7 @@ CREATE TABLE payments (
   subscription_id INT NOT NULL,
   member_id       INT NOT NULL,
   amount          DECIMAL(10,2) NOT NULL,
-  payment_mode    ENUM('cash','upi','card','other') NOT NULL DEFAULT 'cash',
+  payment_mode    ENUM('cash','upi','card','online','other') NOT NULL DEFAULT 'cash',
   payment_date    DATE NOT NULL,
   receipt_no      VARCHAR(30) NOT NULL UNIQUE,
   note            VARCHAR(255),

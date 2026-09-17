@@ -5,6 +5,7 @@ import { money } from '../utils.js';
 import { toast } from '../toast.js';
 import StatusBadge from '../components/StatusBadge.jsx';
 import Modal from '../components/Modal.jsx';
+import RazorpayCheckout from '../components/RazorpayCheckout.jsx';
 
 export default function Fees() {
   const [subs, setSubs] = useState([]);
@@ -22,6 +23,7 @@ export default function Fees() {
   const [offerOpen, setOfferOpen] = useState(false);
   const [editingOffer, setEditingOffer] = useState(null);
   const [editSub, setEditSub] = useState(null);
+  const [onlinePay, setOnlinePay] = useState(null);
 
   async function loadSubs() {
     setLoading(true);
@@ -56,6 +58,10 @@ export default function Fees() {
     e.preventDefault();
     const payload = Object.fromEntries(new FormData(e.target).entries());
     try {
+      if (payload.payment_mode === 'online') {
+        setOnlinePay({ subscription: activeSub, amount: Number(payload.amount) });
+        return;
+      }
       await api('/fees/payments', { method: 'POST', body: JSON.stringify(payload) });
       toast('Payment recorded');
       setPayModalOpen(false);
@@ -211,6 +217,15 @@ export default function Fees() {
           <div className="modal-actions"><button type="button" className="btn btn-ghost" onClick={() => setEditSub(null)}>Cancel</button><button className="btn btn-primary">Save Changes</button></div>
         </form>
       </Modal>
+
+      {onlinePay && (
+        <RazorpayCheckout
+          subscription={activeSub}
+          amount={onlinePay.amount}
+          onDone={() => { setOnlinePay(null); setPayModalOpen(false); loadSubs(); }}
+          onClose={() => setOnlinePay(null)}
+        />
+      )}
     </>
   );
 }

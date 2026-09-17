@@ -6,6 +6,7 @@ import { money, fmtTime } from '../utils.js';
 import { toast } from '../toast.js';
 import StatusBadge from '../components/StatusBadge.jsx';
 import Modal from '../components/Modal.jsx';
+import RazorpayCheckout from '../components/RazorpayCheckout.jsx';
 
 export default function MemberProfile() {
   const { id } = useParams();
@@ -27,6 +28,7 @@ export default function MemberProfile() {
   const [receiptOpen, setReceiptOpen] = useState(false);
   const [receipt, setReceipt] = useState(null);
   const [progressOpen, setProgressOpen] = useState(false);
+  const [onlinePay, setOnlinePay] = useState(null);
 
   async function loadPlans() {
     const p = await api('/plans');
@@ -79,6 +81,10 @@ export default function MemberProfile() {
     e.preventDefault();
     const payload = Object.fromEntries(new FormData(e.target).entries());
     try {
+      if (payload.payment_mode === 'online') {
+        setOnlinePay({ subscription: activeSub, amount: Number(payload.amount) });
+        return;
+      }
       const payment = await api('/fees/payments', { method: 'POST', body: JSON.stringify(payload) });
       toast('Payment recorded');
       setPayModalOpen(false);
@@ -435,6 +441,18 @@ export default function MemberProfile() {
           )}
         </div>
       </div>
+
+      {onlinePay && (
+        <RazorpayCheckout
+          subscription={activeSub}
+          amount={onlinePay.amount}
+          memberName={member?.full_name}
+          memberEmail={member?.email || ''}
+          memberPhone={member?.phone || ''}
+          onDone={() => { setOnlinePay(null); setPayModalOpen(false); loadMember(); }}
+          onClose={() => setOnlinePay(null)}
+        />
+      )}
     </>
   );
 }

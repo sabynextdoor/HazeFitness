@@ -530,6 +530,65 @@ label { font-size: 12px; color: var(--text-dim); display: block; margin-bottom: 
 .modal h3 { margin-top: 0; font-family: var(--font-display); }
 .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
 
+.rzp-checkout {
+  width: 380px;
+  max-width: 92vw;
+  background: linear-gradient(180deg, #171a2e, #0e1020);
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.7), var(--frost);
+  animation: lxIn .22s ease both;
+}
+.rzp-screen { padding: 18px 20px 20px; }
+.rzp-brand { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; }
+.rzp-brand span { font-family: var(--font-display); font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+.rzp-brand em { font-style: normal; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dim); }
+.rzp-merchant { display: flex; align-items: center; gap: 12px; background: #131627; border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; }
+.rzp-merchant-logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #6ae4ff, #7444f5); color: #fff; font-family: var(--font-display); font-weight: 700; display: grid; place-items: center; }
+.rzp-merchant strong { display: block; font-size: 13px; }
+.rzp-merchant span { font-size: 11px; color: var(--dim); }
+.rzp-amount { font-family: var(--font-display); font-size: 26px; font-weight: 700; text-align: center; margin: 16px 0; }
+.rzp-methods { display: grid; gap: 8px; margin-bottom: 14px; }
+.rzp-method { display: flex; align-items: center; gap: 10px; background: #131627; border: 1px solid var(--border); border-radius: 10px; padding: 9px 12px; cursor: pointer; text-align: left; width: 100%; transition: border-color .15s ease; }
+.rzp-method:hover { border-color: var(--border-strong); }
+.rzp-method.active { border-color: #6ae4ff; box-shadow: 0 0 0 1px rgba(106, 228, 255, 0.35); }
+.rzp-method-icon { width: 34px; height: 34px; border-radius: 9px; background: #1b2036; display: grid; place-items: center; font-size: 13px; font-weight: 700; color: #6ae4ff; }
+.rzp-method-name { flex: 1; font-size: 13px; font-weight: 600; display: flex; flex-direction: column; }
+.rzp-method-name em { font-style: normal; font-size: 11px; color: var(--dim); font-weight: 400; }
+.rzp-method-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--border-strong); }
+.rzp-method.active .rzp-method-dot { border-color: #6ae4ff; background: radial-gradient(circle, #6ae4ff 40%, transparent 46%); }
+.rzp-demo-note { font-size: 11px; color: var(--dim); text-align: center; margin-bottom: 10px; }
+.rzp-pay-btn { width: 100%; background: linear-gradient(135deg, #7b4dff, #5a2cf0); color: #fff; border: 0; border-radius: 10px; padding: 12px; font-family: var(--font-display); font-size: 15px; font-weight: 700; cursor: pointer; }
+.rzp-pay-btn:hover { filter: brightness(1.1); box-shadow: 0 10px 26px rgba(102, 58, 243, 0.45); }
+.rzp-sec { text-align: center; font-size: 11px; color: var(--dim); margin-top: 12px; }
+.rzp-sec strong { color: var(--fg); }
+.rzp-spinner { width: 36px; height: 36px; margin: 14px auto 0; border-radius: 50%; border: 3px solid var(--border-strong); border-top-color: #6ae4ff; animation: rzpSpin .8s linear infinite; }
+@keyframes rzpSpin { to { transform: rotate(360deg); } }
+.rzp-tick { width: 56px; height: 56px; margin: 8px auto; border-radius: 50%; background: rgba(47, 205, 122, 0.15); color: #2fcd7a; font-size: 30px; display: grid; place-items: center; animation: lxIn .3s ease both; }
+
+/* ════════════════════════════════════════════════════════════
+   Signature watermark — crafted & signed watermark for Haze.
+   Subtle on screen (low opacity, always present), full-strength
+   on paper prints so every receipt carries the mark.
+   ════════════════════════════════════════════════════════════ */
+body::after {
+  content: "❖ Crafted & signed by Saby · Haze Fitness GMS";
+  position: fixed;
+  right: 10px; bottom: 5px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  opacity: 0.18;
+  z-index: 9998;
+  pointer-events: none;
+  user-select: none;
+  text-transform: uppercase;
+}
+@media print {
+  body::after { opacity: 1; color: #335; font-weight: 600; }
+}
+
 .toast {
   position: fixed; bottom: 22px; right: 22px;
   background: linear-gradient(180deg, #1b2036, #121627);

@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { ClerkProvider } from '@clerk/react';
 import App from './App.jsx';
+import { stampSignature } from './signature.js';
 import './style.css';
+
+stampSignature();
 
 const CLERK_PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 

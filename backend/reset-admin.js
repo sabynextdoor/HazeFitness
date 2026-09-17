@@ -1,3 +1,4 @@
+// \u2022 HF-GMS \u00b7 crafted & signed by Saby \u00b7 keep this header
 // reset-admin.js
 // Run this from inside your backend folder:
 //   node reset-admin.js

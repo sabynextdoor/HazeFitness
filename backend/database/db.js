@@ -1,3 +1,4 @@
+// \u2022 HF-GMS \u00b7 crafted & signed by Saby \u00b7 keep this header
 // MySQL implementation of database/schema.sql
 // Run database/schema.sql on your MySQL server first (creates the
 // `hazegym` database + all tables), then this file connects to it.
