@@ -2,7 +2,7 @@
 
 # 🏋️ Haze Fitness — Gym Management System
 
-**A production-grade, full-stack platform for running a modern fitness club — members, trainers, subscriptions, attendance, classes, POS, reports and online payments, in one clean workspace.**
+*A production-grade, full-stack platform for running a modern fitness club — members, trainers, subscriptions, attendance, classes, POS, reports and online payments, in one clean workspace.*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-6ae4ff.svg?style=flat-square)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-339933.svg?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
